@@ -1,4 +1,3 @@
-# Import necessary libraries
 import os
 import sys
 import time
@@ -6,9 +5,7 @@ import random
 import warnings
 
 import numpy as np
-import matplotlib.pyplot as plt
 from tqdm import tqdm_notebook as tqdm
-from skimage.transform import resize
 
 import tensorflow as tf
 from tensorflow.keras.models import load_model
@@ -44,7 +41,7 @@ window_height = frame.shape[0]
 
 # Set the preview window size to match the normal window
 cv2.namedWindow("preview", cv2.WINDOW_NORMAL)
-cv2.resizeWindow("preview", window_width, window_height)
+
 
 # Initialize FPS variables
 start_time = time.time()
@@ -54,11 +51,9 @@ frame_count = 0
 while rval:
     rval, frame = vc.read()
     ima1 = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-    img = resize(ima1, (IMG_HEIGHT, IMG_WIDTH), mode='constant', preserve_range=True)
+    img = cv2.resize(ima1, (IMG_WIDTH, IMG_HEIGHT))
 
     # Convert image to compatible depth
-    img = img.astype(np.uint8)
-
     img_gray = cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)
     img_norm = img_gray / 255.0
     img_input = np.expand_dims(img_norm, axis=2)
