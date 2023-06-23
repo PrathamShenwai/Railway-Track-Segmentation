@@ -8,7 +8,7 @@ The dataset used for this project is the RailSem19 Railway Track Segmentation Da
 
 ### The repository contains trained model of U-Net in different deployable formats.
 
-- run the live.py script to view the inference through webcam. \\
-- run the video.py script to view the model inference on video. \\
+- run the live.py script to view the inference through webcam. 
+- run the video.py script to view the model inference on video. 
 - Jupyter notebook contains the training code.
 
